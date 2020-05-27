@@ -1,0 +1,73 @@
+<html> 
+<head> 
+    <title>Codellion Connect</title> 
+</head> 
+  
+<body> 
+<div class="main-form"> 
+ <h1>Timeline of</h1> 
+ <h2 id="clientEmail"></h2>
+   <h2> Idea:</h2> <textarea type="text" placeholder="Idea: " id="Idea" rows="4" cols="50"></textarea><br /><br /> 
+   <h2>  Planning:</h2> <textarea type="text" placeholder="Planning: " id="Planning"rows="4" cols="50"></textarea><br /><br /> 
+   <h2>  Development:</h2> <textarea type="text" placeholder="Development: " id="Development" rows="4" cols="50"> </textarea><br /><br /> 
+   <h2>  Testing:</h2> <textarea type="text" placeholder="Testing" id="Testing" rows="4" cols="50"></textarea> <br /><br /> 
+   <h2>  Deployment:</h2> <textarea type="text" placeholder="Deployment" id="Deployment" rows="4" cols="50"></textarea> <br /><br />
+   <h2>  Services:</h2> <textarea type="text" id="Services"  placeholder="Services" rows="4" cols="50" ></textarea> <br><br>
+
+   <label for="currentstage">Currently At:</label>
+   <select name="currentstage" id="currentstage">
+     <option value="Idea">Idea</option>
+     <option value="Planning">Planning</option>
+     <option value="Development">Development</option>
+     <option value="Testing">Testing</option>
+     <option value="Deployment">Deployment</option>
+     <option value="Services">Services</option>
+
+   </select>
+    
+	
+<br /><br /> 
+ <button id="saveButton" onclick="storeData()" >Update</button> 
+
+
+
+ <br><br>
+
+
+</div> 
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBA-MDWxrP6d_yG6NBaKm_lI7HQenp6vNo",
+    authDomain: "codellion-connect.firebaseapp.com",
+    databaseURL: "https://codellion-connect.firebaseio.com",
+    projectId: "codellion-connect",
+    storageBucket: "codellion-connect.appspot.com",
+    messagingSenderId: "441848860273",
+    appId: "1:441848860273:web:c9696369cc466551c415d0",
+    measurementId: "G-K94DZ9SRPC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  
+</script>
+
+
+
+<script src="timeline.js"></script>
+
+
+
+ 
+
+</body>
+</html>

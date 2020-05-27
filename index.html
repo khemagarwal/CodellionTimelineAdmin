@@ -1,0 +1,85 @@
+<html> 
+<head> 
+    <title>Codellion Connect</title> 
+</head> 
+  
+<body> 
+<div class="main-form"> 
+ <h1>Sign Up</h1> 
+    Customer Name: <input type="text" placeholder="Name: " id="Name"><br /><br /> 
+    Company Name: <input type="text" placeholder="Company: " id="companyName"><br /><br /> 
+    Mobile Number: <input type="number" placeholder="Mobile no" id="mobileNo"> <br /><br /> 
+    Customer Email: <input type="email" placeholder="Email" id="custEmail"> <br /><br /> 
+    Password: <input type="password" placeholder="Password" id="password"> <br /><br />
+    Agreement: <input type="file" id="fileButton" value="upload"/> <br><br>
+    <progress id="uploader" value="0" max="100">0%</progress><br><br>
+	
+<br /><br /> 
+ <button id="saveButton" onclick="storeData()" >Sign up</button> 
+
+ <button  onclick="sendEmail()" >Send Email </button> 
+
+ <br><br>
+
+
+</div> 
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBA-MDWxrP6d_yG6NBaKm_lI7HQenp6vNo",
+    authDomain: "codellion-connect.firebaseapp.com",
+    databaseURL: "https://codellion-connect.firebaseio.com",
+    projectId: "codellion-connect",
+    storageBucket: "codellion-connect.appspot.com",
+    messagingSenderId: "441848860273",
+    appId: "1:441848860273:web:c9696369cc466551c415d0",
+    measurementId: "G-K94DZ9SRPC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  
+</script>
+
+<script>
+    var uploader = document.getElementById('uploader');
+      var fileButton = document.getElementById('fileButton');
+      fileButton.addEventListener('change', function(e){
+      var file = e.target.files[0];
+      var storageRef = firebase.storage().ref('agreement/'+document.getElementById("custEmail").value);
+
+      var task = storageRef.put(file);
+      task.on('state_changed', function progress(snapshot) {
+        var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+        uploader.value = percentage;
+    
+      }, function error(err) {
+    
+    
+      },function complete() {
+
+
+    
+      });
+    });  
+
+
+      
+</script>
+
+<script src="index.js"></script>
+<script src="send-email.js"></script>
+
+
+ 
+
+</body>
+</html>

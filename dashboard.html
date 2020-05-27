@@ -1,0 +1,58 @@
+<html> 
+<head> 
+    <title>Codellion Connect</title> 
+</head> 
+  
+<body> 
+<div class="main-form"> 
+ <h1>Dashboard</h1> 
+ 
+ <h1 id="Email"></h1>
+
+ <br><br>
+
+ <button id="signout" onclick="signout()">Sign out</button>
+ <br><br>
+ Client Email: <input type="text" placeholder="Email: " id="email"><br /><br /> 
+
+ <button id="timeline" onclick="timeline()">Update Timeline</button>
+
+</div> 
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBA-MDWxrP6d_yG6NBaKm_lI7HQenp6vNo",
+    authDomain: "codellion-connect.firebaseapp.com",
+    databaseURL: "https://codellion-connect.firebaseio.com",
+    projectId: "codellion-connect",
+    storageBucket: "codellion-connect.appspot.com",
+    messagingSenderId: "441848860273",
+    appId: "1:441848860273:web:c9696369cc466551c415d0",
+    measurementId: "G-K94DZ9SRPC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  
+</script>
+
+
+<script src="dashboard.js"></script>
+
+<script>
+
+  function timeline()
+  {
+    window.location.href="timeline.html";
+    console.log(document.getElementById("email").value);
+    localStorage.setItem("clientEmail",document.getElementById("email").value );
+  }
+  </script>
+ 
+
+</body>
+</html>
